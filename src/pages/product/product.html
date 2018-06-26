@@ -1,0 +1,31 @@
+<ion-content>
+  <!-- REFRESH -->
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- CLOSE BTN -->
+  <img class="close" src="assets/imgs/close.png" (click)="close()">
+  <!-- FEATURED IMAGE -->
+  <div class="featuredImage" [ngStyle]="{ 'background-image': 'url(' + product.image + ')'}" width="100%"></div>
+
+  <div class="padding-20 mg-top-20">
+    <!-- TITLE -->
+    <p class="gray bold no-margin">Produto</p>
+    <h3 class="black bold no-margin">{{product.title2}}</h3>
+
+    <!-- DESCRIPTION -->
+    <p class="black mg-top-20">{{product.title2}} esta em promoção no {{product.supermercado}} em {{product.local}}</p>
+    <!-- LOCAL  -->
+    <p class="black mg-top-20"></p>
+
+  </div>
+</ion-content>
+
+<!-- FOOTER -->
+<ion-footer (click)="add()">
+  <ion-toolbar class="center">
+    <h4 class="eggshell bold no-margin">Adicionar ao Carrinho</h4>
+    <h4 class="eggshell no-margin">por R$ {{product.price}}</h4>
+  </ion-toolbar>
+</ion-footer>

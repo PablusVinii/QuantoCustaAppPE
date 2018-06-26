@@ -1,0 +1,239 @@
+<ion-content *ngIf="user">
+  <!-- REFRESH -->
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <!-- HEADER -->
+  <div class="feed-header">
+    <!-- WELCOME MESSAGE -->
+    <h4 class="eggshell regular">
+      Olá, {{user.name}}!
+      
+    </h4>
+
+    <!-- DEFAULT AVATAR -->
+    <div *ngIf="!user.avatar" class="avatarPos avatar">
+    </div>
+    <div class="avatarPos avatar">
+      
+    </div>
+    <!-- USER AVATAR -->
+    <div *ngIf="user.avatar" class="avatarPos" [ngStyle]="{ 'background-image': 'url(' + user.avatar + ')'}">
+    </div>
+  </div>
+
+  <!-- SUBHEADER -->
+  <div class="feed-subheader">
+    <!-- ADDRESS -->
+    <p class="black bold" *ngIf="!user.address">
+      Complete seu cadastro
+    </p>
+    <p class="black bold" *ngIf="user.address">
+      {{user.city}}, {{user.neighborhood}}
+    </p>
+
+    <!-- EDIT -->
+    <!-- <p class="black edit">
+      Editar
+    </p> -->
+  </div>
+
+  <!-- BODY -->
+  <div class="padding-20 padding-bottom-0">
+
+  <!-- FEATURED TEXT -->
+<h3 class="black bold">
+    Mercados com  Novas Ofertas
+  </h3>
+      <ion-scroll scrollX="true" scrollbar-x="false" style="width: 100%; height: 140px">
+        <ion-row nowrap>
+          <div class="slideContainer center" *ngFor="let p of mercados; let i = index" [ngClass]="i != 0 ? 'mg-left-20' : ''" (click)="openMercado(p)">
+            <div class="slideItem" [ngStyle]="{ 'background-image': 'url(' + p.image + ')'}">
+            </div>
+            <p class="black regular mg-0 mg-top-15">
+              {{p.title}}<br>
+              {{p.local}}<br>
+            </p>
+          </div>
+        </ion-row>
+      </ion-scroll>
+    <!-- FEATURED TEXT -->
+    <h3 class="black bold">
+      Perfumaria e Higiene
+    </h3>
+
+    <!-- SLIDE ITEMS -->
+    <ion-scroll scrollX="true" scrollbar-x="false" style="width: 100%; height: 140px">
+      <ion-row nowrap>
+        <div class="slideContainer center" *ngFor="let p of products; let i = index" [ngClass]="i != 0 ? 'mg-left-20' : ''" (click)="open(p)">
+          <div class="slideItem" [ngStyle]="{ 'background-image': 'url(' + p.image + ')'}">
+          </div>
+          <p class="black regular mg-0 mg-top-19">
+            {{p.title}}<br>
+            <span style="color:red;">R$ {{p.price}}</span><br>
+            {{p.local}}<br>
+          </p>
+        </div>
+      </ion-row>
+    </ion-scroll>
+    
+    <!-- SHOW ALL OPTIONS
+    <div class="showAllOptions bold center" (click)="openProducts()">
+      Ver todas as opções
+    </div>
+     -->
+<!-- FEATURED TEXT -->
+<h3 class="black bold">
+  Limpeza
+</h3>
+    <ion-scroll scrollX="true" scrollbar-x="false" style="width: 100%; height: 140px">
+      <ion-row nowrap>
+        <div class="slideContainer center" *ngFor="let p of frios; let i = index" [ngClass]="i != 0 ? 'mg-left-20' : ''" (click)="open(p)">
+          <div class="slideItem" [ngStyle]="{ 'background-image': 'url(' + p.image + ')'}">
+          </div>
+          <p class="black regular mg-0 mg-top-19">
+            {{p.title}}<br>
+            <span style="color:red;">R$ {{p.price}}</span><br>
+            {{p.local}}<br>
+          </p>
+        </div>
+      </ion-row>
+    </ion-scroll>
+
+    <!-- FEATURED TEXT -->
+<h3 class="black bold">
+  Carnes
+</h3>
+    <ion-scroll scrollX="true" scrollbar-x="false" style="width: 100%; height: 140px">
+      <ion-row nowrap>
+        <div class="slideContainer center" *ngFor="let p of carnes; let i = index" [ngClass]="i != 0 ? 'mg-left-20' : ''" (click)="open(p)">
+          <div class="slideItem" [ngStyle]="{ 'background-image': 'url(' + p.image + ')'}">
+          </div>
+          <p class="black regular mg-0 mg-top-15">
+              {{p.title}}<br>
+              <span style="color:red;">R$ {{p.price}}</span><br>
+              {{p.local}}<br>
+          </p>
+        </div>
+      </ion-row>
+    </ion-scroll>
+
+    <!-- FEATURED TEXT -->
+<h3 class="black bold">
+    Bebidas
+  </h3>
+      <ion-scroll scrollX="true" scrollbar-x="false" style="width: 100%; height: 140px">
+        <ion-row nowrap>
+          <div class="slideContainer center" *ngFor="let p of bebidas; let i = index" [ngClass]="i != 0 ? 'mg-left-20' : ''" (click)="open(p)">
+            <div class="slideItem" [ngStyle]="{ 'background-image': 'url(' + p.image + ')'}">
+            </div>
+            <p class="black regular mg-0 mg-top-15">
+                {{p.title}}<br>
+                <span style="color:red;">R$ {{p.price}}</span><br>
+                {{p.local}}<br>
+            </p>
+          </div>
+        </ion-row>
+      </ion-scroll>
+  
+    <!-- FEATURED TEXT -->
+<h3 class="black bold">
+  Congelados
+</h3>
+    <ion-scroll scrollX="true" scrollbar-x="false" style="width: 100%; height: 140px">
+      <ion-row nowrap>
+        <div class="slideContainer center" *ngFor="let p of congelados; let i = index" [ngClass]="i != 0 ? 'mg-left-20' : ''" (click)="open(p)">
+          <div class="slideItem" [ngStyle]="{ 'background-image': 'url(' + p.image + ')'}">
+          </div>
+          <p class="black regular mg-0 mg-top-15">
+              {{p.title}}<br>
+              <span style="color:red;">R$ {{p.price}}</span><br>
+              {{p.local}}<br>
+          </p>
+        </div>
+      </ion-row>
+    </ion-scroll>
+
+    <!-- FEATURED TEXT -->
+<h3 class="black bold">
+  Hortifruti
+</h3>
+    <ion-scroll scrollX="true" scrollbar-x="false" style="width: 100%; height: 140px">
+      <ion-row nowrap>
+        <div class="slideContainer center" *ngFor="let p of hortifruti; let i = index" [ngClass]="i != 0 ? 'mg-left-20' : ''" (click)="open(p)">
+          <div class="slideItem" [ngStyle]="{ 'background-image': 'url(' + p.image + ')'}">
+          </div>
+          <p class="black regular mg-0 mg-top-15">
+              {{p.title}}<br>
+              <span style="color:red;">R$ {{p.price}}</span><br>
+              {{p.local}}<br>
+          </p>
+        </div>
+      </ion-row>
+    </ion-scroll>
+
+    <!-- FEATURED TEXT -->
+<h3 class="black bold">
+  Mercearia
+</h3>
+    <ion-scroll scrollX="true" scrollbar-x="false" style="width: 100%; height: 140px">
+      <ion-row nowrap>
+        <div class="slideContainer center" *ngFor="let p of mercearia; let i = index" [ngClass]="i != 0 ? 'mg-left-20' : ''" (click)="open(p)">
+          <div class="slideItem" [ngStyle]="{ 'background-image': 'url(' + p.image + ')'}">
+          </div>
+          <p class="black regular mg-0 mg-top-15">
+              {{p.title}}<br>
+              <span style="color:red;">R$ {{p.price}}</span><br>
+              {{p.local}}<br>
+          </p>
+        </div>
+      </ion-row>
+    </ion-scroll>
+
+    <!-- SHOW ALL OPTIONS
+    <div class="showAllOptions bold center" (click)="openFrios()">
+      Ver todas as opções
+    </div>
+   -->
+    <!-- FEATURED TEXT -->
+    <h3 class="black bold mg-top-60">
+      Seu carrinho
+    </h3>
+
+    <!-- AMOUNT -->
+    <div class="amountContainer">
+      <h4 class="red regular no-margin" style="display: inline-block">
+        R$
+      </h4>
+      <h1 class="red bold no-margin font40" style="display: inline-block">
+        {{toPrice(amount)}}
+      </h1>
+
+      <div class="amountRight">
+        <h1 class="red bold no-margin font40" style="display: inline-block">
+          {{items.length}}
+        </h1>
+        <h4 class="red regular no-margin" style="display: inline-block">
+          Itens
+        </h4>
+      </div>
+    </div>
+
+    <!-- FAB CART BUTTON 
+  <ion-fab right bottom (click)="openCart()">
+      <button ion-fab class="bgButton">
+        <ion-icon class="eggshell" name="md-cart"></ion-icon>
+      </button>
+    </ion-fab>-->
+
+    <!-- SHOW ALL OPTIONS -->
+    <div class="showAllOptions bold center mg-top-10" (click)="openCart()">
+      Abrir carrinho
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+</ion-content>

@@ -1,0 +1,146 @@
+<ion-content>
+    <!-- REFRESH -->
+    <ion-refresher (ionRefresh)="refresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+  
+    <!-- CLOSE BTN -->
+    <img class="close" src="assets/imgs/close.png" (click)="close()">
+    <!-- FEATURED IMAGE -->
+    <div class="featuredImage" [ngStyle]="{ 'background-image': 'url(' + product.image + ')'}" width="100%"></div>
+  
+    <div class="padding-20 mg-top-20">
+      <!-- TITLE -->
+      <p class="gray bold no-margin">Mercado</p>
+      <h3 class="black bold no-margin">{{product.title}}</h3>
+  
+      <!-- Endereco -->
+      <p class="black mg-top-20">End.: {{product.endereco}}</p>
+      <p class="black mg-top-20">Contato: {{product.tel}}</p>
+      
+      <!-- LOCAL  -->
+      <p class="black mg-top-20"></p>
+      <h3 class="black bold no-margin">PRINCIPAIS OFERTAS</h3>
+      <!--PRODUTO 1-->
+      <ion-list>
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="{{product.image1}}">
+            </ion-thumbnail>
+            <h2>{{product.produto1}}</h2>
+            
+            <button ion-button clear item-end><h3>R$ {{product.price1}}</h3></button>
+          </ion-item>
+        </ion-list>
+      <!--PRODUTO 2-->
+      <ion-list>
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="{{product.image2}}">
+            </ion-thumbnail>
+            <h2>{{product.produto2}}</h2>
+            
+            <button ion-button clear item-end><h3>R$ {{product.price2}}</h3></button>
+          </ion-item>
+        </ion-list>
+      <!--PRODUTO 3-->
+      <ion-list>
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="{{product.image3}}">
+            </ion-thumbnail>
+            <h2>{{product.produto3}}</h2>
+            
+            <button ion-button clear item-end><h3>R$ {{product.price3}}</h3></button>
+          </ion-item>
+        </ion-list>
+
+        <!--PRODUTO 4-->
+        <ion-list>
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img src="{{product.image4}}">
+              </ion-thumbnail>
+              <h2>{{product.produto4}}</h2>
+              
+              <button ion-button clear item-end><h3>R$ {{product.price4}}</h3></button>
+            </ion-item>
+          </ion-list>
+          <!--PRODUTO 5-->
+        <ion-list>
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img src="{{product.image5}}">
+              </ion-thumbnail>
+              <h2>{{product.produto5}}</h2>
+              
+              <button ion-button clear item-end><h3>R$ {{product.price5}}</h3></button>
+            </ion-item>
+          </ion-list>
+          <!--PRODUTO 6-->
+        <ion-list>
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img src="{{product.image6}}">
+              </ion-thumbnail>
+              <h2>{{product.produto6}}</h2>
+              
+              <button ion-button clear item-end><h3>R$ {{product.price6}}</h3></button>
+            </ion-item>
+          </ion-list>
+          <!--PRODUTO 7-->
+        <ion-list>
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img src="{{product.image7}}">
+              </ion-thumbnail>
+              <h2>{{product.produto7}}</h2>
+              
+              <button ion-button clear item-end><h3>R$ {{product.price7}}</h3></button>
+            </ion-item>
+          </ion-list>
+          <!--PRODUTO 8-->
+        <ion-list>
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img src="{{product.image8}}">
+              </ion-thumbnail>
+              <h2>{{product.produto8}}</h2>
+              
+              <button ion-button clear item-end><h3>R$ {{product.price8}}</h3></button>
+            </ion-item>
+          </ion-list>
+          <!--PRODUTO 9-->
+        <ion-list>
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img src="{{product.image9}}">
+              </ion-thumbnail>
+              <h2>{{product.produto9}}</h2>
+              
+              <button ion-button clear item-end><h3>R$ {{product.price9}}</h3></button>
+            </ion-item>
+          </ion-list>
+          <!--PRODUTO 10-->
+        <ion-list>
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img src="{{product.image10}}">
+              </ion-thumbnail>
+              <h2>{{product.produto10}}</h2>
+              
+              <button ion-button clear item-end><h3>R$ {{product.price10}}</h3></button>
+            </ion-item>
+          </ion-list>
+          
+  
+    </div>
+  </ion-content>
+  
+  <!-- FOOTER -->
+  <ion-footer>
+    <ion-toolbar class="center">
+      <h4 class="eggshell bold no-margin">Ofertas em</h4>
+      <h4 class="eggshell no-margin">{{product.title}} de {{product.local}}</h4>
+    </ion-toolbar>
+  </ion-footer>
